@@ -1,7 +1,11 @@
-FROM alpine:3.12
+FROM ubuntu:18.04
 
-RUN apk update && apk add --no-cache fortune
+RUN apt-get update
 
-USER 1001
+RUN apt-get install nginx
 
-ENTRYPOINT ["fortune"]
+RUN touch index.html /var/www/html/
+
+RUN echo 'My name is $NAME and my age is $AGE' > /var/www/html/index.html
+
+RUN service nginx restart
