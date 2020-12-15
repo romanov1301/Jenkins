@@ -1,7 +1,11 @@
-FROM alpine:3.12
+FROM ubuntu:18.04
 
-RUN apk update && apk add --no-cache fortune
+RUN apt-get update
 
-USER 1001
+RUN apt-get install -y nginx
 
-ENTRYPOINT ["fortune"]
+RUN rm /var/www/html/*
+
+RUN touch index.html /var/www/html/
+
+RUN echo 'Hello World' > /var/www/html/index.html
