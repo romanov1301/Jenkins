@@ -1,11 +1,7 @@
-MAINTAINER Roman Tkachuk <romanov1301@gmail.com>
+FROM alpine:3.12
 
-FROM ubuntu:18.04
+RUN apk update && apk add --no-cache fortune
 
-RUN apt update
+USER 1001
 
-RUN apt install nginx
-
-RUN ufw app list
-
-
+ENTRYPOINT ["fortune"]
